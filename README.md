@@ -9,7 +9,7 @@ Cursor plugin for [Kit](https://startupkit.app). It adds Kit's MCP server, so th
 - **Training, Performance, Team**: programs and completion status, review cycles, members and invitations
 - **Docs**: search Kit's documentation and plans
 
-The agent cannot email a candidate. A reply it writes lands as a draft in the application's thread; a teammate sends it from Kit.
+Free-form replies to candidates and researchers are saved as drafts for a teammate to send from Kit. Tools that do email someone, such as interview invitations, clarification requests and deadline extensions, are annotated as destructive, so clients that honor MCP hints ask before running them.
 
 ## Install
 
