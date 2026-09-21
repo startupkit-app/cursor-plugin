@@ -1,34 +1,57 @@
-# Cursor plugin template
+# Kit for Cursor
 
-Build and publish Cursor Marketplace plugins from a single repo.
+Official Cursor plugin for [Kit](https://startupkit.app). It connects Cursor to Kit's MCP server, so the agent can work with your hiring pipeline, security reports, outreach campaigns, training programs and salary data without leaving the editor.
 
-Two starter plugins are included:
+- **Hiring**: list job postings and applications, summarize candidates, advance stages, message candidates
+- **Security (CSIRT)**: triage vulnerability reports, check duplicates, propose bounties
+- **Outreach**: manage campaigns and prospects, draft and approve emails
+- **Compensation research**: salary benchmarks, role comparisons, market trends
+- **Training, performance and team**: training programs and completion status, review cycles, members and invitations
+- **Docs**: search Kit's documentation and plans
 
-- **starter-simple**: rules and skills only
-- **starter-advanced**: rules, skills, agents, commands, hooks, MCP, and scripts
+## Install
 
-## Getting started
+In Cursor, open the plugin marketplace, search for **Kit** and click **Install**.
 
-[Use this template](https://github.com/cursor/plugin-template/generate) to create a new repository, then customize:
+The plugin adds one MCP server, `kit`, at `https://startupkit.app/api/v1/mcp`. If you already added a server named `kit` by hand, remove it to avoid duplicate tools.
 
-1. `.cursor-plugin/marketplace.json`: set marketplace `name`, `owner`, and `metadata`.
-2. `plugins/*/.cursor-plugin/plugin.json`: set `name` (lowercase kebab-case), `displayName`, `author`, `description`, `keywords`, `license`, and `version`.
-3. Replace placeholder rules, skills, agents, commands, hooks, scripts, and logos.
+Without the marketplace, [add the server with one click](https://cursor.com/install-mcp?name=kit&config=eyJ1cmwiOiJodHRwczovL3N0YXJ0dXBraXQuYXBwL2FwaS92MS9tY3AifQ%3D%3D), or put this in `.cursor/mcp.json`:
 
-To add more plugins, see `docs/add-a-plugin.md`.
+```json
+{
+  "mcpServers": {
+    "kit": { "url": "https://startupkit.app/api/v1/mcp" }
+  }
+}
+```
 
-## Single plugin vs multi-plugin
+## Sign in and permissions
 
-This template defaults to **multi-plugin** (multiple plugins in one repo).
+The first `kit` tool call opens Kit's consent screen in your browser. Pick the account, then choose **Read** or **Read & write** per module (Hiring, CSIRT, Outreach, Training, Performance, Team; Compensation Research is read-only). Writes are off by default, and modules outside your role can't be granted. Tools from modules you didn't grant never reach the agent.
 
-For a **single plugin**, move your plugin folder contents to the repository root, keep one `.cursor-plugin/plugin.json`, and remove `.cursor-plugin/marketplace.json`.
+Review or revoke connections under [Account Settings → Connected clients](https://startupkit.app/user/connected_clients).
 
-## Submission checklist
+## Try it
 
-- Each plugin has a valid `.cursor-plugin/plugin.json`.
-- Plugin names are unique, lowercase, and kebab-case.
-- `.cursor-plugin/marketplace.json` entries map to real plugin folders.
-- All frontmatter metadata is present in rule, skill, agent, and command files.
-- Logos are committed and referenced with relative paths.
-- `node scripts/validate-template.mjs` passes.
-- Repository link is ready for submission to the Cursor team (Slack or `kniparko@anysphere.com`).
+- "Which applications for the Senior Rails Engineer role are waiting on me?"
+- "Summarize this candidate and draft a note for the hiring manager."
+- "Triage the newest security report and check it for duplicates."
+- "What's the salary benchmark for a staff engineer in Berlin?"
+
+Kit's server also ships MCP prompts (`hiring_summarize_candidate`, `csirt_triage_report`, `outreach_draft_followup` and more) and `skill://` resources, so workflows live on the server and stay current without plugin updates.
+
+## Docs
+
+- [Connecting AI assistants](https://startupkit.app/docs/connecting-ai-assistants)
+- [Agent setup prompt](https://startupkit.app/agent-setup/prompt.md)
+- [Roadmap](ROADMAP.md)
+
+## Development
+
+```bash
+node scripts/validate-template.mjs
+```
+
+## License
+
+[MIT](LICENSE)

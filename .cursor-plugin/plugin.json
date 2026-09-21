@@ -1,0 +1,26 @@
+{
+  "name": "startupkit",
+  "displayName": "Kit",
+  "version": "0.1.0",
+  "description": "Kit is the operations platform for hiring, security reports, outreach, training and performance reviews. This plugin connects Cursor to Kit's MCP server.",
+  "author": {
+    "name": "Kit",
+    "email": "eb@fourthwall.com",
+    "url": "https://startupkit.app"
+  },
+  "homepage": "https://startupkit.app/docs/connecting-ai-assistants",
+  "repository": "https://github.com/startupkit-app/cursor-plugin",
+  "license": "MIT",
+  "keywords": [
+    "kit",
+    "startupkit",
+    "hiring",
+    "recruiting",
+    "ats",
+    "security",
+    "bug-bounty",
+    "outreach",
+    "mcp"
+  ],
+  "logo": "assets/logo.svg"
+}
