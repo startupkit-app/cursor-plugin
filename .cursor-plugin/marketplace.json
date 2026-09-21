@@ -1,8 +1,8 @@
 {
   "name": "startupkit",
   "owner": {
-    "name": "Kit",
-    "email": "eb@fourthwall.com"
+    "name": "startupkit",
+    "email": "ernest@startupkit.app"
   },
   "metadata": {
     "description": "Kit (startupkit.app) plugins for Cursor",
