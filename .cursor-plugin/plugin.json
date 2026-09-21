@@ -1,0 +1,29 @@
+{
+  "name": "startupkit",
+  "displayName": "Kit",
+  "version": "0.1.0",
+  "description": "Kit (startupkit.app) runs hiring, vulnerability reports, outreach, training and performance reviews. Work in it from Cursor over remote MCP with OAuth sign-in.",
+  "author": {
+    "name": "startupkit",
+    "email": "ernest@startupkit.app",
+    "url": "https://startupkit.app"
+  },
+  "homepage": "https://startupkit.app/docs/connecting-ai-assistants",
+  "repository": "https://github.com/startupkit-app/cursor-plugin",
+  "license": "MIT",
+  "keywords": [
+    "kit",
+    "startupkit",
+    "hiring",
+    "recruiting",
+    "ats",
+    "security",
+    "bug-bounty",
+    "outreach",
+    "training",
+    "performance-reviews",
+    "compensation",
+    "mcp"
+  ],
+  "logo": "assets/logo.svg"
+}

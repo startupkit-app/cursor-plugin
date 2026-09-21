@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "kit": {
+      "type": "http",
+      "url": "https://startupkit.app/api/v1/mcp"
+    }
+  }
+}

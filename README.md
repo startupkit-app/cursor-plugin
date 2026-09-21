@@ -1,34 +1,59 @@
-# Cursor plugin template
+# Kit for Cursor
 
-Build and publish Cursor Marketplace plugins from a single repo.
+Cursor plugin for [Kit](https://startupkit.app). It adds Kit's MCP server, so the agent in Cursor can read and act on your hiring pipeline, security reports, outreach campaigns, training programs and review cycles.
 
-Two starter plugins are included:
+- **Hiring**: list job postings and applications, summarize a candidate, advance or reject an application, save notes, stage replies to candidates as drafts
+- **Security (CSIRT)**: triage a report, check it for duplicates, suggest severity, propose and approve bounties
+- **Outreach**: manage campaigns and prospects, draft emails, approve pending messages
+- **Compensation Research**: salary benchmarks, role comparisons, market trends (read-only)
+- **Training, Performance, Team**: programs and completion status, review cycles, members and invitations
+- **Docs**: search Kit's documentation and plans
 
-- **starter-simple**: rules and skills only
-- **starter-advanced**: rules, skills, agents, commands, hooks, MCP, and scripts
+The agent cannot email a candidate. A reply it writes lands as a draft in the application's thread; a teammate sends it from Kit.
 
-## Getting started
+## Install
 
-[Use this template](https://github.com/cursor/plugin-template/generate) to create a new repository, then customize:
+In Cursor, open the plugin marketplace, search for **Kit** and click **Install**.
 
-1. `.cursor-plugin/marketplace.json`: set marketplace `name`, `owner`, and `metadata`.
-2. `plugins/*/.cursor-plugin/plugin.json`: set `name` (lowercase kebab-case), `displayName`, `author`, `description`, `keywords`, `license`, and `version`.
-3. Replace placeholder rules, skills, agents, commands, hooks, scripts, and logos.
+The plugin adds one MCP server, `kit`, at `https://startupkit.app/api/v1/mcp` (streamable HTTP). If you already added a server named `kit` by hand, remove it so each tool shows up once.
 
-To add more plugins, see `docs/add-a-plugin.md`.
+Without the marketplace, [add the server with one click](https://cursor.com/install-mcp?name=kit&config=eyJ1cmwiOiJodHRwczovL3N0YXJ0dXBraXQuYXBwL2FwaS92MS9tY3AifQ%3D%3D), or put this in `.cursor/mcp.json`:
 
-## Single plugin vs multi-plugin
+```json
+{
+  "mcpServers": {
+    "kit": { "url": "https://startupkit.app/api/v1/mcp" }
+  }
+}
+```
 
-This template defaults to **multi-plugin** (multiple plugins in one repo).
+## Sign in and permissions
 
-For a **single plugin**, move your plugin folder contents to the repository root, keep one `.cursor-plugin/plugin.json`, and remove `.cursor-plugin/marketplace.json`.
+The first `kit` tool call opens Kit's consent screen in your browser. There is no API key to paste: the server uses OAuth with dynamic client registration. Pick an account, then choose **Read** or **Read & write** for each module: Hiring, CSIRT, Outreach, Training, Performance, Team. Compensation Research is read-only. Writes are off by default. Modules outside your role can't be granted, and tools from modules you didn't grant never reach the agent.
 
-## Submission checklist
+Revoke a connection under [Settings → Connected clients](https://startupkit.app/user/connected_clients).
 
-- Each plugin has a valid `.cursor-plugin/plugin.json`.
-- Plugin names are unique, lowercase, and kebab-case.
-- `.cursor-plugin/marketplace.json` entries map to real plugin folders.
-- All frontmatter metadata is present in rule, skill, agent, and command files.
-- Logos are committed and referenced with relative paths.
-- `node scripts/validate-template.mjs` passes.
-- Repository link is ready for submission to the Cursor team (Slack or `kniparko@anysphere.com`).
+## Try it
+
+- "Which applications for the Senior Rails Engineer role are waiting on me?"
+- "Summarize this candidate and save a note for the hiring manager."
+- "Triage the newest security report and check it for duplicates."
+- "What's the median salary for a senior backend engineer in Warsaw?"
+
+Kit's server also ships MCP prompts (`hiring_summarize_candidate`, `csirt_triage_report`, `outreach_draft_followup` and others) and `skill://` resources. They update on the server; the plugin needs no release for them.
+
+## Docs
+
+- [Connecting AI assistants](https://startupkit.app/docs/connecting-ai-assistants)
+- [Agent setup prompt](https://startupkit.app/agent-setup/prompt.md)
+- [Roadmap](ROADMAP.md)
+
+## Development
+
+```bash
+node scripts/validate.mjs
+```
+
+## License
+
+[MIT](LICENSE)
