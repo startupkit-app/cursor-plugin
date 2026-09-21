@@ -16,5 +16,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node scripts/validate-template.mjs
+      - run: node scripts/validate.mjs
       - run: node -e "JSON.parse(require('fs').readFileSync('mcp.json', 'utf8'))"

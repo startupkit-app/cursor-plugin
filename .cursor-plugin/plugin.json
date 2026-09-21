@@ -2,7 +2,7 @@
   "name": "startupkit",
   "displayName": "Kit",
   "version": "0.1.0",
-  "description": "Kit is the operations platform for hiring, security reports, outreach, training and performance reviews. This plugin connects Cursor to Kit's MCP server.",
+  "description": "Kit (startupkit.app) runs hiring, vulnerability reports, outreach, training and performance reviews. Work in it from Cursor over remote MCP with OAuth sign-in.",
   "author": {
     "name": "startupkit",
     "email": "ernest@startupkit.app",
@@ -20,6 +20,9 @@
     "security",
     "bug-bounty",
     "outreach",
+    "training",
+    "performance-reviews",
+    "compensation",
     "mcp"
   ],
   "logo": "assets/logo.svg"

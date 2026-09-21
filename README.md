@@ -1,19 +1,21 @@
 # Kit for Cursor
 
-Official Cursor plugin for [Kit](https://startupkit.app). It connects Cursor to Kit's MCP server, so the agent can work with your hiring pipeline, security reports, outreach campaigns, training programs and salary data without leaving the editor.
+Cursor plugin for [Kit](https://startupkit.app). It adds Kit's MCP server, so the agent in Cursor can read and act on your hiring pipeline, security reports, outreach campaigns, training programs and review cycles.
 
-- **Hiring**: list job postings and applications, summarize candidates, advance stages, message candidates
-- **Security (CSIRT)**: triage vulnerability reports, check duplicates, propose bounties
-- **Outreach**: manage campaigns and prospects, draft and approve emails
-- **Compensation research**: salary benchmarks, role comparisons, market trends
-- **Training, performance and team**: training programs and completion status, review cycles, members and invitations
+- **Hiring**: list job postings and applications, summarize a candidate, advance or reject an application, save notes, stage replies to candidates as drafts
+- **Security (CSIRT)**: triage a report, check it for duplicates, suggest severity, propose and approve bounties
+- **Outreach**: manage campaigns and prospects, draft emails, approve pending messages
+- **Compensation Research**: salary benchmarks, role comparisons, market trends (read-only)
+- **Training, Performance, Team**: programs and completion status, review cycles, members and invitations
 - **Docs**: search Kit's documentation and plans
+
+The agent cannot email a candidate. A reply it writes lands as a draft in the application's thread; a teammate sends it from Kit.
 
 ## Install
 
 In Cursor, open the plugin marketplace, search for **Kit** and click **Install**.
 
-The plugin adds one MCP server, `kit`, at `https://startupkit.app/api/v1/mcp`. If you already added a server named `kit` by hand, remove it to avoid duplicate tools.
+The plugin adds one MCP server, `kit`, at `https://startupkit.app/api/v1/mcp` (streamable HTTP). If you already added a server named `kit` by hand, remove it so each tool shows up once.
 
 Without the marketplace, [add the server with one click](https://cursor.com/install-mcp?name=kit&config=eyJ1cmwiOiJodHRwczovL3N0YXJ0dXBraXQuYXBwL2FwaS92MS9tY3AifQ%3D%3D), or put this in `.cursor/mcp.json`:
 
@@ -27,18 +29,18 @@ Without the marketplace, [add the server with one click](https://cursor.com/inst
 
 ## Sign in and permissions
 
-The first `kit` tool call opens Kit's consent screen in your browser. Pick the account, then choose **Read** or **Read & write** per module (Hiring, CSIRT, Outreach, Training, Performance, Team; Compensation Research is read-only). Writes are off by default, and modules outside your role can't be granted. Tools from modules you didn't grant never reach the agent.
+The first `kit` tool call opens Kit's consent screen in your browser. There is no API key to paste: the server uses OAuth with dynamic client registration. Pick an account, then choose **Read** or **Read & write** for each module: Hiring, CSIRT, Outreach, Training, Performance, Team. Compensation Research is read-only. Writes are off by default. Modules outside your role can't be granted, and tools from modules you didn't grant never reach the agent.
 
-Review or revoke connections under [Account Settings → Connected clients](https://startupkit.app/user/connected_clients).
+Revoke a connection under [Settings → Connected clients](https://startupkit.app/user/connected_clients).
 
 ## Try it
 
 - "Which applications for the Senior Rails Engineer role are waiting on me?"
-- "Summarize this candidate and draft a note for the hiring manager."
+- "Summarize this candidate and save a note for the hiring manager."
 - "Triage the newest security report and check it for duplicates."
-- "What's the salary benchmark for a staff engineer in Berlin?"
+- "What's the median salary for a senior backend engineer in Warsaw?"
 
-Kit's server also ships MCP prompts (`hiring_summarize_candidate`, `csirt_triage_report`, `outreach_draft_followup` and more) and `skill://` resources, so workflows live on the server and stay current without plugin updates.
+Kit's server also ships MCP prompts (`hiring_summarize_candidate`, `csirt_triage_report`, `outreach_draft_followup` and others) and `skill://` resources. They update on the server; the plugin needs no release for them.
 
 ## Docs
 
@@ -49,7 +51,7 @@ Kit's server also ships MCP prompts (`hiring_summarize_candidate`, `csirt_triage
 ## Development
 
 ```bash
-node scripts/validate-template.mjs
+node scripts/validate.mjs
 ```
 
 ## License

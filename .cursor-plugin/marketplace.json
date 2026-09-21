@@ -5,7 +5,7 @@
     "email": "ernest@startupkit.app"
   },
   "metadata": {
-    "description": "Kit (startupkit.app) plugins for Cursor",
+    "description": "Cursor plugin for Kit (startupkit.app): hiring, security reports, outreach, training and performance reviews over MCP.",
     "version": "0.1.0"
   },
   "plugins": [
